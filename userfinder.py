@@ -84,7 +84,7 @@ MIN_KARMA = 50000
 sub_count = 1
 kw = 0 #current karmawhore count
 SUBMISSIONS_PER_SUB = 25
-NUMBER_OF_SUBS = 500
+NUMBER_OF_SUBS = 25
 
 worst_sub = ""
 worst_sub_karmawhores = 0
@@ -142,7 +142,7 @@ with open("powerusers.txt", "a") as myfile:
         myfile.write(user+"\n")
 
 print('Time elapsed')
-print(str(time.time() - NOW)+' seconds')
+print(str(int(time.time() - NOW)/60)+' minutes')
 print('Worst subreddit(s)')
 print(worst_sub)
 print(str(worst_sub_karmawhores)+' powerusers out of '+str(SUBMISSIONS_PER_SUB) +', '+str((worst_sub_karmawhores/SUBMISSIONS_PER_SUB)*100)+'%')
