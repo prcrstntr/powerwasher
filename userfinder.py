@@ -38,7 +38,7 @@ Only track people who make the front page, because that's easier.
 '''
 checkedUsers = set()
 poweruser = set()
-notapoweruser = set()
+regularuser = set()
 watchlist = set()
 
 powerusers = dict()
@@ -60,19 +60,19 @@ except Exception as e:
 try:
     print('Importing regular users')
 
-    with open("notapoweruser.txt") as f:
+    with open("regularuser.txt") as f:
         content = f.readlines()
     # you may also want to remove whitespace characters like `\n` at the end of each line
     content = [x.strip() for x in content] 
     for user in content:
-        notapoweruser.add(user)
+        regularuser.add(user)
     f.close()
 except Exception as e:
     print(e)
 
 for user in poweruser:
     checkedUsers.add(user)
-for user in notapoweruser:
+for user in regularuser:
     checkedUsers.add(user)
 
 NOW = time.time()    
@@ -82,9 +82,13 @@ NOW = time.time()
 YEARLY_KARMA_LIMIT = 300000 #300,000
 MIN_KARMA = 50000
 sub_count = 1
-kw = 0
-SUBMISSIONS_PER_SUB = 5
-NUMBER_OF_SUBS = 1000
+kw = 0 #current karmawhore count
+SUBMISSIONS_PER_SUB = 25
+NUMBER_OF_SUBS = 500
+
+worst_sub = ""
+worst_sub_karmawhores = 0
+
 for subreddit in reddit.subreddits.popular(limit = NUMBER_OF_SUBS):
     kw = 0
     print()
@@ -100,15 +104,15 @@ for subreddit in reddit.subreddits.popular(limit = NUMBER_OF_SUBS):
                 account_age = time.time() - author.created_utc
                 account_karma = author.link_karma
                 if account_karma / (account_age / YEAR) > YEARLY_KARMA_LIMIT and account_karma > MIN_KARMA: #more than n karma a year, but less than 50k incase they got lucky
-                    print(name + " is a karmawhore with "+str(account_karma)+" karma and "+
-                          str(int(account_karma / (account_age / YEAR))) +" karma/year")
+                    print(name + " is a karmawhore with "+str("{:,}".format((account_karma)))+" karma and "+
+                          str("{:,}".format(int(account_karma / (account_age / YEAR)))) +" karma/year")
                     poweruser.add(name)
                     #powerusers[name] = (account_karma, author.comment_karma, account_age)
                     kw +=1
                     if account_age < MONTH:
                         watchlist.add(name) #Maybe not one. 
                 else:
-                    notapoweruser.add(name)
+                    regularuser.add(name)
             elif name in poweruser:
                 kw+=1
         except Exception as e:
@@ -116,20 +120,30 @@ for subreddit in reddit.subreddits.popular(limit = NUMBER_OF_SUBS):
     if kw == 0:
         print('Free from powerusers')
     else:
+        if kw > worst_sub_karmawhores:
+            worst_sub_karmawhores = kw
+            worst_sub = str(subreddit)
+        elif kw == worst_sub_karmawhores:
+            worst_sub+= " ,"+str(subreddit)
+            
         print(str(kw)+' powerusers out of '+str(SUBMISSIONS_PER_SUB) +', '+str((kw/SUBMISSIONS_PER_SUB)*100)+'%')
 
-open("notapoweruser.txt", "w").close()
+open("regularuser.txt", "w").close()
 
-with open("notapoweruser.txt", "a") as myfile:
-    for user in notapoweruser:
+with open("regularuser.txt", "a") as myfile:
+    for user in regularuser:
         myfile.write(user+"\n")
         
 open("powerusers.txt", "w").close()
 
 with open("powerusers.txt", "a") as myfile:
     for user in poweruser:
-        print(user)        
+        #print(user)        
         myfile.write(user+"\n")
 
 print('Time elapsed')
 print(str(time.time() - NOW)+' seconds')
+print('Worst subreddit(s)')
+print(worst_sub)
+print(str(worst_sub_karmawhores)+' powerusers out of '+str(SUBMISSIONS_PER_SUB) +', '+str((worst_sub_karmawhores/SUBMISSIONS_PER_SUB)*100)+'%')
+
