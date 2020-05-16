@@ -84,7 +84,7 @@ MIN_KARMA = 50000
 sub_count = 1
 kw = 0 #current karmawhore count
 SUBMISSIONS_PER_SUB = 25
-NUMBER_OF_SUBS = 100
+NUMBER_OF_SUBS = 10
 
 worst_sub = ""
 worst_sub_karmawhores = 0
@@ -128,12 +128,15 @@ for subreddit in reddit.subreddits.popular(limit = NUMBER_OF_SUBS):
             
         print(str(kw)+' powerusers out of '+str(SUBMISSIONS_PER_SUB) +', '+str((kw/SUBMISSIONS_PER_SUB)*100)+'%')
 
+
+
 open("regularuser.txt", "w").close()
 
 with open("regularuser.txt", "a") as myfile:
     for user in regularuser:
         myfile.write(user+"\n")
-        
+
+poweruser = sorted(poweruser)
 open("powerusers.txt", "w").close()
 
 with open("powerusers.txt", "a") as myfile:
