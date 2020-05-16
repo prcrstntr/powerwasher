@@ -31,7 +31,10 @@ except Exception as e:
 
 for user in poweruser:
     print(user)
-    redditor = reddit.redditor(user)
-    redditor.block()
+    try:
+        redditor = reddit.redditor(user)
+        redditor.block()
+    except Exception as e:
+        print("Error for /u/"+user)
 
 print('Done')
