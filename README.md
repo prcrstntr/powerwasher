@@ -50,4 +50,4 @@ The basic steps are:
 
 **Q:** Why?
 
-**A:** I care too much about nothing. 
+**A:** Spent too much time on this site and am disapointed to see it decay the way it has. 
