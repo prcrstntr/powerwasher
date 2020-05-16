@@ -83,6 +83,7 @@ YEARLY_KARMA_LIMIT = 300000 #300,000
 MIN_KARMA = 50000
 sub_count = 1
 kw = 0 #current karmawhore count
+total_kw = 0
 SUBMISSIONS_PER_SUB = 25
 NUMBER_OF_SUBS = 10
 
@@ -127,6 +128,7 @@ for subreddit in reddit.subreddits.popular(limit = NUMBER_OF_SUBS):
             worst_sub+= " ,"+str(subreddit)
             
         print(str(kw)+' powerusers out of '+str(SUBMISSIONS_PER_SUB) +', '+str((kw/SUBMISSIONS_PER_SUB)*100)+'%')
+    total_kw += kw
 
 
 
@@ -149,4 +151,4 @@ print(str(int(int(time.time() - NOW)/60))+' minutes')
 print('Worst subreddit(s)')
 print(worst_sub)
 print(str(worst_sub_karmawhores)+' powerusers out of '+str(SUBMISSIONS_PER_SUB) +', '+str((worst_sub_karmawhores/SUBMISSIONS_PER_SUB)*100)+'%')
-
+print("Total posts by kw: "+str(total_kw)+" out of about "+ str("{:,}".format((SUBMISSIONS_PER_SUB*NUMBER_OF_SUBS))))
