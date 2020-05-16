@@ -20,7 +20,7 @@ The basic steps are:
 **Python**
 
 *Both python files need to be edited with reddit account info.* 
-* userfinder.py - Finds users on the front page that have too much karma per year. Saves to powerusers.txt Currently runs really slow. 
+* userfinder.py - Finds users on popular subreddits that have too much karma per year. Saves to powerusers.txt Currently runs really slow. 
 * userIgnorer.py - Ignores user in powerusers.txt. Takes a few minutes to run. 
 
 **Text Files**
@@ -30,12 +30,12 @@ The basic steps are:
 
 # FAQ
 
-*i havnt shared this with anybody so these werent actually asked*
+*i havnt shared this with anybody so these werent actually asked. Updates over time*
 ##
 
 **Q:** How do you determine "karmawhore"?   
 
-**A:** Anybody who gets over 300k link karma in a year and has over 50k.
+**A:** Anybody who gets over 300k link karma per year ratio and has over 50k. For example, somebody who has been year for a month with 60k will get added to this list. Somebody who got a front page post thier first week will not. Does not take into account old, but only recently activeated accounts. 
 ##
 
 **Q:** Can you remove a user from this list?
