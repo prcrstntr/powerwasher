@@ -31,15 +31,23 @@ The basic steps are:
 # FAQ
 
 *i havnt shared this with anybody so these werent actually asked*
+##
 
-**Q** How do you determine "karmawhore"?      
-**A** Anybody who gets over 300k link karma in a year and has over 50k.
+**Q:** How do you determine "karmawhore"?   
 
-**Q** Can you remove a user from this list?
-**A** It depends. 
+**A:** Anybody who gets over 300k link karma in a year and has over 50k.
+##
 
-**Q** Is link karma counted? 
-**A** No. Only post karma. Comments are the lifeblood of reddit. 
+**Q:** Can you remove a user from this list?
 
-**Q** Why?
-**A** I care too much about nothing. 
+**A:** It depends. 
+##
+
+**Q:** Is link karma counted? 
+
+**A:** No. Only post karma. Comments are the lifeblood of reddit. 
+##
+
+**Q:** Why?
+
+**A:** I care too much about nothing. 
