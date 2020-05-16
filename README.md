@@ -20,7 +20,7 @@ The basic steps are:
 **Python**
 
 *Both python files need to be edited with reddit account info.* 
-* userfinder.py - Finds users on the front page that have too much karma per year. Saves to powerusers.txt Currently runs really slow. 
+* userfinder.py - Finds users on popular subreddits that have too much karma per year. Saves to powerusers.txt Currently runs really slow. 
 * userIgnorer.py - Ignores user in powerusers.txt. Takes a few minutes to run. 
 
 **Text Files**
